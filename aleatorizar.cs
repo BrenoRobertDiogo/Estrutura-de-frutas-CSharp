@@ -1,4 +1,5 @@
 using System;
+// Classe usada para fazer os números aleatórios responsivamente com os dados enviados
 class Aleatorizar {
   public static int frutaAleatoria( int atribuido, int compara1, int compara2, int range1, int range2, int range3 ) {
     Random numAleatorio = new Random();

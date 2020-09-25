@@ -10,9 +10,9 @@ OBS.: São R$5 Kilo
   CATALOGO:
 [x] | Nome | Quantidade disponível | Peso médio | Validade
 ");
-
+  // Criação da variável que vai de onde sairão os números aleatórios
   Random numAleatorio = new Random();
-
+  // Categorização das frutas
   string[] frutas = new string[9] {
     "Goiaba",
      "Coco",
@@ -24,8 +24,7 @@ OBS.: São R$5 Kilo
      "Melão",
      "Morango" 
      };
-  //
-
+  // Junção dos dados das frutas para uma melhor compreensão dos dados
   double[,] todosDados = new double[frutas.Length, 3];
 
   // Colocando os valores das variáveis
@@ -44,42 +43,50 @@ OBS.: São R$5 Kilo
     valorTeste.Validade = todosDados[i, 2];
     }
 
-    for( int i=0; i < frutas.Length; i++ ) {
-      Console.WriteLine($@"[{i}] | {frutas[i]}
-           |          {todosDados[i, 0]} Unidades  |    {todosDados[i, 1]}Kg   |      {todosDados[i, 2]} Dias 
---------------------------------------------------------------------------");
-    }
+    
   
   string ateQuando;
   double carrinho = 0;
   double preco = 0;
   double aumentar = 0;
   do {
-    Console.WriteLine("Digite o número do pedido e depois a quantidade: ");
+
+    // For para printar os valores gravados acima
+    for( int i=0; i < frutas.Length; i++ ) {
+      Console.WriteLine($@"[{i}] | {frutas[i]}
+           |          {todosDados[i, 0]} Unidades  |    {todosDados[i, 1]}Kg   |      {todosDados[i, 2]} Dias 
+--------------------------------------------------------------------------");
+    }
+    // Pedindo a quantidade e o pedido pelo ID
+    Console.WriteLine("Digite o número do pedido e depois a quantidade. ");
+    // ID
     Console.Write("Número: ");
     int acrescentaLista = int.Parse(Console.ReadLine());
+    // Quantidade
     Console.Write("Quantidade: ");
     double quantidadeProduto = double.Parse(Console.ReadLine());
 
+    // Indo para analisar o preço e aplicar o desconto caso necessário
     aumentar = analisePreco.analise(todosDados[acrescentaLista, 1], quantidadeProduto, todosDados[acrescentaLista, 2]);
     preco += aumentar/100;
+    // Subtraindo a quantidade de produtos existentes
     todosDados[acrescentaLista, 0] -= quantidadeProduto;
 
     Console.Write("Digite 'sair' caso já comprou o que queria: ");
     ateQuando = Console.ReadLine();
-
+    // Adicionando mais itens ao carrinho
     carrinho += quantidadeProduto;
 
   } while(ateQuando!="sair");
   
   Console.Write("Você vai pagar: ");
-
+  // Escrevendo o preço em vermelho
   Console.ForegroundColor = ConsoleColor.Red;
   Console.Write(preco);
   Console.ResetColor();
 
   Console.Write(" por ");
-
+  // Quantidade de frutas em vermelho
   Console.ForegroundColor = ConsoleColor.Red;
   Console.Write(carrinho);
   Console.ResetColor();
