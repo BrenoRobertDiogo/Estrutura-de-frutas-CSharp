@@ -1,6 +1,7 @@
 using System;
+// As duas classes recebem uma string, e a partir disso elas analisam os dados
 class analiseFruta {
-  
+  // Onde ele vai analisar o peso da fruta
   public static double peso( string fruta ) {
     
     int pesoFruta;
@@ -42,6 +43,7 @@ class analiseFruta {
   
   }
 
+  // Onde ele vai analisar a validade da fruta
   public static int validade( string fruta ) {
     int validadeFruta;
     switch( fruta ) {

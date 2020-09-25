@@ -1,3 +1,4 @@
+// Onde terá os dados do produto
 class Produto {
   public string Nome { get; set; }
   public double Quantidade { get; set; }
